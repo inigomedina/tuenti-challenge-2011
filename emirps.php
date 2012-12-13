@@ -1,6 +1,16 @@
 #!/usr/bin/php
 <?php
 
+/**
+ * Given a number on stdin, calculate the sum of the emirps up to that max 
+ * limit.
+ *
+ * Emirps: http://en.wikipedia.org/wiki/Emirp
+ *
+ * Example input: 100
+ * Example output: 418
+ */
+
 class CalculateSumEmirps
 {
 
@@ -12,11 +22,13 @@ class CalculateSumEmirps
 		}
 	}
 
+	// Read input data
 	public function read_stdin() {
 		$f = fopen('php://stdin', 'r');
 		return $f;
 	}
 
+	// Sum emirps up to the given limit
 	private function sum_emirps($limit) {
 		$emirps = $this->build_emirps($limit);
 		$sum = 0;
@@ -27,7 +39,7 @@ class CalculateSumEmirps
 		return $sum;
 	}
 
-
+	// Build a list of emirps from prime numbers
 	private function build_emirps($max) {
 
 		$primes = array();
@@ -51,11 +63,13 @@ class CalculateSumEmirps
 		return $emirps;
 	}
 
+	// Check wether a number is prime
 	public function check_is_prime( $num ) {
 
 		if($num == 1)
 			return false;
 
+		// Number 2 is prime too
 		if(($num != 2) & ($num % 2 == 0))
 			return false;
 
